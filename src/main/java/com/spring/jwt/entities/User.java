@@ -1,7 +1,7 @@
 package com.spring.jwt.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,14 +11,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
-@Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Builder
+@Table(name = "users")
+@Entity
 public class User implements UserDetails {
 
     @Id
@@ -73,4 +68,46 @@ public class User implements UserDetails {
         return true;
     }
 
+    public User setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public User setFullName(String fullName) {
+        this.fullName = fullName;
+        return this;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public User setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public User setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }
+
